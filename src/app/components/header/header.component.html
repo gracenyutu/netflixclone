@@ -1,0 +1,47 @@
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Niconne&family=Seaweed+Script&display=swap" rel="stylesheet">
+<div class="container" *ngIf="headerBGUrl; else loading">
+  <div class="header">
+    <div
+      class="header__banner"
+      [ngStyle]="{
+        'background-size': 'cover',
+        'background-position': 'top center',
+        'background-image': 'url(' + headerBGUrl + ')'
+      }">
+      <div class="featured--horizontal">
+        <div class="featured--vertical"></div>
+      </div>
+      <div class="info">
+        <div class="title">
+          <h2>{{ this.series.results[this.randomNumber].name }}</h2>
+          <span class="points">Rating: </span>
+          <span class="points">{{
+            this.series.results[this.randomNumber].vote_average }}</span>
+          <span>{{
+            this.series.results[this.randomNumber].first_air_date | date: "yyyy"
+          }}</span>
+        </div>
+        <p>{{ this.overview }}</p>
+        <div class="info-btns">
+          <a href="{{ this.key }}">
+          <button class="watchButton">► Watch </button></a>
+          <button class="listButton">+ My List</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="header__main"
+      id="stickyHeader"
+      [class.sticky]="sticky"
+      #stickHeader
+    >
+      <div class="header__left">
+        <p style="font-family: 'Niconne', cursive;font-size: 64px;">Movies</p>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <mat-spinner [color]="color" style="margin: 80px auto"></mat-spinner>
+</ng-template>

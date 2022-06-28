@@ -1,0 +1,69 @@
+<link href="https://fonts.googleapis.com/css2?family=Lobster&family=Niconne&family=Seaweed+Script&display=swap" rel="stylesheet">
+<div class="container" *ngIf="headerBGUrl; else loading">
+  <div class="header">
+    <div
+      class="header__banner"
+      [ngStyle]="{
+        'background-size': 'cover',
+        height: '100%',
+        'background-position': 'top center',
+        'background-image': 'url(' + headerBGUrl + ')'
+      }"
+    >
+      <div class="featured--horizontal">
+        <div class="featured--vertical"></div>
+      </div>
+      <div class="info">
+        <div class="title">
+          <h2>{{ movie.title }}</h2>
+          <span class="points">Rating: </span>
+          <span class="points">{{ movie.vote_average }}</span>
+          <span>{{ movie.release_date | date: "yyyy" }}</span>
+        </div>
+        <p>{{ overview }}</p>
+        <div class="info-btns">
+          <button class="watchButton">► Watch</button>
+          <button class="listButton">+ My List</button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="header__main"
+      id="stickyHeader"
+      [class.sticky]="sticky"
+      #stickHeader
+    >
+      <div class="header__left">
+        <p style="font-family: 'Niconne', cursive;font-size: 64px;">Movies</p>
+      </div>
+
+      <div class="header__right">
+        <img
+          src=""
+          alt="avatar"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="iframe" *ngIf="videoUrl; else loading">
+  <p>Trailer {{ movie.title }}</p>
+  <iframe
+    width="620"
+    height="315"
+    [src]="videoUrl"
+    controls="0"
+    title="YouTube video player"
+    frameborder="0"
+    allowfullscreen
+  >
+  </iframe>
+</div>
+
+<app-list title="Similar" [movies]="similar" style="color: white"></app-list>
+
+<ng-template #loading>
+  <mat-spinner [color]="color" style="margin: 80px auto"></mat-spinner>
+</ng-template>
