@@ -21,6 +21,7 @@ import { ListComponent } from './components/list/list.component';
 import { HeaderComponent } from './components/header/header.component';
 import { OverviewComponent } from './components/overview/overview.component';
 import { HomeComponent } from './components/home/home.component';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { HomeComponent } from './components/home/home.component';
     HomeComponent,
     ShowDataComponent,
     PagenotfoundComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
